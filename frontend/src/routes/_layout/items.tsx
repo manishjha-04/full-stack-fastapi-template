@@ -26,10 +26,11 @@ const itemsSearchSchema = z.object({
   page: z.number().catch(1),
 })
 
-export const Route = createFileRoute("/_layout/items")({
-  component: Items,
-  validateSearch: (search) => itemsSearchSchema.parse(search),
-})
+
+  export const Route = createFileRoute("/_layout/items")({
+     validateSearch: (search) => itemsSearchSchema.parse(search),
+  });
+
 
 const PER_PAGE = 5
 
@@ -131,15 +132,4 @@ function ItemsTable() {
   )
 }
 
-function Items() {
-  return (
-    <Container maxW="full">
-      <Heading size="lg" textAlign={{ base: "center", md: "left" }} pt={12}>
-        Items Management
-      </Heading>
 
-      <Navbar type={"Item"} addModalAs={AddItem} />
-      <ItemsTable />
-    </Container>
-  )
-}

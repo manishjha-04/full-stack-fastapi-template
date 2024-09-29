@@ -28,10 +28,11 @@ const usersSearchSchema = z.object({
   page: z.number().catch(1),
 })
 
-export const Route = createFileRoute("/_layout/admin")({
-  component: Admin,
-  validateSearch: (search) => usersSearchSchema.parse(search),
-})
+
+  export const Route = createFileRoute("/_layout/admin")({
+     validateSearch: (search) => usersSearchSchema.parse(search),
+  });
+
 
 const PER_PAGE = 5
 
@@ -156,15 +157,4 @@ function UsersTable() {
   )
 }
 
-function Admin() {
-  return (
-    <Container maxW="full">
-      <Heading size="lg" textAlign={{ base: "center", md: "left" }} pt={12}>
-        Users Management
-      </Heading>
 
-      <Navbar type={"User"} addModalAs={AddUser} />
-      <UsersTable />
-    </Container>
-  )
-}
